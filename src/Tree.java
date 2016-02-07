@@ -15,7 +15,7 @@ public class Tree {
         root = insert(data, root, null);
     }
 
-    public Node insert(int data, Node current, Node parent){
+    private Node insert(int data, Node current, Node parent){
         if (current == null){
             current = new Node();
 
@@ -40,34 +40,56 @@ public class Tree {
     }
 
     public Node findData(int data){
-        Node _dataNode = findData(root, data);
-/*
-        if (root.getData() == data) {
-            _dataNode = root;
-        }else if (root.getData() < data){
-            _dataNode = findData(root.getNodeRight(), data);
-        }else if(root.getData() > data){
-            _dataNode = findData(root.getNodeLeft(), data);
-        }
-*/
-        return _dataNode;
-
+        return findData(root, data);
     }
 
     private Node findData(Node current, int data) {
-        Node _dataNode = null;
+        Node result = null;
 
         if (current == null){
-            _dataNode = null;
+            result = null;
         }else if (current.getData() == data) {
-            _dataNode = current;
+            result = current;
         }else if (current.getData() < data){
-            _dataNode = findData(current.getNodeRight(), data);
+            result = findData(current.getNodeRight(), data);
         }else{
-            _dataNode = findData(current.getNodeLeft(), data);
+            result = findData(current.getNodeLeft(), data);
         }
 
-        return _dataNode;
+        return result;
     }
 
+    public Node findMin(){
+        return findMin(root);
+    }
+
+    private Node findMin(Node current){
+        Node result = null;
+
+        if (current.getNodeLeft() == null){
+            result = current;
+        }
+        else{
+            result = findMin(current.getNodeLeft());
+        }
+
+        return result;
+    }
+
+    public Node findMax(){
+        return findMax(root);
+    }
+
+    private Node findMax(Node current){
+        Node result = null;
+
+        if (current.getNodeRight() == null){
+            result = current;
+        }
+        else{
+            result = findMax(current.getNodeRight());
+        }
+
+        return result;
+    }
 }

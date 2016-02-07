@@ -13,6 +13,8 @@ public class BinaryTree {
         myTree.insert(13);
         myTree.insert(5);
         myTree.insert(1);
+        myTree.insert(0);
+        myTree.insert(23);
 
         for (int i=0; i < 50; i++){
             displayNode = myTree.findData(i);
@@ -22,5 +24,8 @@ public class BinaryTree {
                 System.out.println(i + " Not found!");
             }
         }
+
+        System.out.println("Minimum: " + myTree.findMin().getData());
+        System.out.println("Maximum: " + myTree.findMax().getData());
     }
 }
