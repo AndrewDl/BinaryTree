@@ -27,6 +27,8 @@ public class Node {
 
     public void setNodeLeft(Node node){
         nodeLeft = node;
+        if (nodeLeft!= null)
+            nodeLeft.setParent(this);
     }
 
     public Node getNodeRight(){
@@ -35,10 +37,13 @@ public class Node {
 
     public void setNodeRight(Node node){
         nodeRight = node;
+        if (nodeRight != null)
+            nodeRight.setParent(this);
     }
 
     public void setParent (Node node){
         parent = node;
+        if (parent != null) setDepth(parent.getDepth()+1);
     }
 
     public Node getParent(){

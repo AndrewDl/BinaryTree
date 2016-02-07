@@ -3,8 +3,7 @@
  */
 public class Tree {
 
-    //TODO to implement findMin()
-    //TODO to implement findMax()
+    //TODO make tree traverse
 
     private Node root;
     public Tree(){
@@ -19,21 +18,15 @@ public class Tree {
         if (current == null){
             current = new Node();
 
-            if (parent != null)
-                current = new Node(parent.getDepth()+1);
-
-
             current.setData(data);
             current.setParent(parent);
             //System.out.println("depth: "+ current.getDepth() +" root " + current.getData());
         }
         else if (current.getData() < data){
             current.setNodeRight( insert(data, current.getNodeRight(), current) );
-  //          System.out.println("depth: "+ current.getNodeRight().getDepth() +" right " + current.getNodeRight().getData());
         }
         else if (current.getData() > data){
             current.setNodeLeft( insert(data, current.getNodeLeft(), current) );
-    //        System.out.println("depth: "+ current.getNodeLeft().getDepth() +" left " + current.getNodeLeft().getData());
         }
 
         return current;
@@ -91,5 +84,56 @@ public class Tree {
             }
         }
         return result;
+    }
+
+    public void remove (int data){
+        remove(data, root);
+    }
+
+    private void remove(int data, Node startNode) {
+        Node removeNod = findData(startNode,data);
+
+        //analyze node
+        boolean isRightNode = false;
+
+        if (removeNod.getParent() != null) {
+            isRightNode = removeNod.getParent().getData() < removeNod.getData();
+        }
+        //case 1: no children
+        if ( (removeNod.getNodeLeft() == null) && (removeNod.getNodeRight()) == null ){
+            if (isRightNode){
+                removeNod.getParent().setNodeRight(null);
+            } else {
+                removeNod.getParent().setNodeLeft(null);
+            }
+        }
+        //case 2: has left child
+        else if ( (removeNod.getNodeLeft() != null) && (removeNod.getNodeRight()) == null ){
+            if (isRightNode){
+                removeNod.getParent().setNodeRight( removeNod.getNodeLeft() );
+            } else {
+                removeNod.getParent().setNodeLeft( removeNod.getNodeLeft() );
+            }
+        }
+        //case 3: has right child
+        else if ( (removeNod.getNodeLeft() == null) && (removeNod.getNodeRight()) != null ){
+            if (isRightNode){
+                removeNod.getParent().setNodeRight( removeNod.getNodeRight() );
+            } else {
+                removeNod.getParent().setNodeLeft( removeNod.getNodeRight() );
+            }
+        }
+        //case 4: 2 children
+        else {
+            //substitute by minimum from the right branch
+            Node rightMin = findMin(removeNod.getNodeRight());
+
+            //duplicate data into
+            remove(rightMin.getData(), removeNod.getNodeRight());
+            removeNod.setData( rightMin.getData() );
+
+
+            System.out.println();
+        }
     }
 }

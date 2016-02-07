@@ -13,16 +13,20 @@ public class BinaryTree {
         myTree.insert(13);
         myTree.insert(5);
         myTree.insert(1);
-        myTree.insert(0);
-        myTree.insert(23);
-        myTree.insert(-23);
+        myTree.insert(4);
+        myTree.insert(8);
+        myTree.insert(7);
+        myTree.insert(9);
+
+        myTree.remove(8);
+
 
         for (int i=-50; i < 50; i++){
             displayNode = myTree.findData(i);
             if ( displayNode!= null) {
                 System.out.println("Value: " + displayNode.getData() + "; Depth: " + displayNode.getDepth());
             }else{
-                System.out.println(i + " Not found!");
+             //   System.out.println(i + " Not found!");
             }
         }
 
