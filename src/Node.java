@@ -7,6 +7,16 @@ public class Node {
     private Node nodeRight;
     private Node parent;
 
+    private int depth = 0;
+
+    public Node(){
+
+    }
+
+    public Node(int depth){
+        this.depth = depth;
+    }
+
     public Node getNodeLeft(){
         return nodeLeft;
     }
@@ -37,5 +47,13 @@ public class Node {
 
     public void setData(int data){
         this.data = data;
+    }
+
+    public void setDepth(int depth) {
+        this.depth = depth;
+    }
+
+    public int getDepth() {
+        return depth;
     }
 }
