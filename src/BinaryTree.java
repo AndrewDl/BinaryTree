@@ -15,8 +15,9 @@ public class BinaryTree {
         myTree.insert(1);
         myTree.insert(0);
         myTree.insert(23);
+        myTree.insert(-23);
 
-        for (int i=0; i < 50; i++){
+        for (int i=-50; i < 50; i++){
             displayNode = myTree.findData(i);
             if ( displayNode!= null) {
                 System.out.println("Value: " + displayNode.getData() + "; Depth: " + displayNode.getDepth());
@@ -25,7 +26,13 @@ public class BinaryTree {
             }
         }
 
-        System.out.println("Minimum: " + myTree.findMin().getData());
-        System.out.println("Maximum: " + myTree.findMax().getData());
+        if ( (myTree.findMin() == null) || (myTree.findMax() == null) ) {
+            System.out.println("Tree is empty");
+        }
+        else{
+            System.out.println("Minimum: " + myTree.findMin().getData());
+            System.out.println("Maximum: " + myTree.findMax().getData());
+        }
     }
 }
+

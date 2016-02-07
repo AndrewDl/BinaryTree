@@ -66,13 +66,13 @@ public class Tree {
     private Node findMin(Node current){
         Node result = null;
 
-        if (current.getNodeLeft() == null){
-            result = current;
+        if (current != null) {
+            if (current.getNodeLeft() == null) {
+                result = current;
+            } else {
+                result = findMin(current.getNodeLeft());
+            }
         }
-        else{
-            result = findMin(current.getNodeLeft());
-        }
-
         return result;
     }
 
@@ -83,13 +83,13 @@ public class Tree {
     private Node findMax(Node current){
         Node result = null;
 
-        if (current.getNodeRight() == null){
-            result = current;
+        if (current != null) {
+            if (current.getNodeRight() == null) {
+                result = current;
+            } else {
+                result = findMax(current.getNodeRight());
+            }
         }
-        else{
-            result = findMax(current.getNodeRight());
-        }
-
         return result;
     }
 }
