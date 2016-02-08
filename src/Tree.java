@@ -5,7 +5,14 @@ public class Tree {
 
     //TODO make tree traverse
 
+    public enum traverseType{
+        INORDER,
+        PREORDER,
+        POSTORDER
+    }
+
     private Node root;
+
     public Tree(){
         root = null;
     }
@@ -134,6 +141,33 @@ public class Tree {
 
 
             System.out.println();
+        }
+    }
+
+    public void traverse(traverseType type){
+        System.out.println("Traverse start");
+        traverse(root, type);
+        System.out.println();
+    }
+
+    private void traverse(Node startNoode, traverseType type){
+        if (startNoode == null) return;
+        switch (type){
+            case INORDER:
+                traverse(startNoode.getNodeLeft(), type);
+                System.out.print(" " + startNoode.getData());
+                traverse(startNoode.getNodeRight(), type);
+                break;
+            case PREORDER:
+                System.out.print(" " + startNoode.getData());
+                traverse(startNoode.getNodeLeft(), type);
+                traverse(startNoode.getNodeRight(), type);
+                break;
+            case POSTORDER:
+                traverse(startNoode.getNodeLeft(), type);
+                traverse(startNoode.getNodeRight(), type);
+                System.out.print(" " + startNoode.getData());
+                break;
         }
     }
 }

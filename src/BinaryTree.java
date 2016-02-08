@@ -37,6 +37,11 @@ public class BinaryTree {
             System.out.println("Minimum: " + myTree.findMin().getData());
             System.out.println("Maximum: " + myTree.findMax().getData());
         }
+
+
+        myTree.traverse(Tree.traverseType.INORDER);
+        myTree.traverse(Tree.traverseType.PREORDER);
+        myTree.traverse(Tree.traverseType.POSTORDER);
     }
 }
 
