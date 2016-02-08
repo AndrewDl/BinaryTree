@@ -3,8 +3,6 @@
  */
 public class Tree {
 
-    //TODO make tree traverse
-
     public enum traverseType{
         INORDER,
         PREORDER,
@@ -44,7 +42,7 @@ public class Tree {
     }
 
     private Node findData(Node current, int data) {
-        Node result = null;
+        Node result;
 
         if (current == null){
             result = null;
